@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.4-b01. --><xs:schema xmlns:tns="http://amazonconnection/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://amazonconnection/">
+
+<xs:element name="ConverAddress" type="tns:ConverAddress"></xs:element>
+
+<xs:element name="ConverAddressResponse" type="tns:ConverAddressResponse"></xs:element>
+
+<xs:element name="ConvertAddress" type="tns:ConvertAddress"></xs:element>
+
+<xs:element name="ConvertAddressResponse" type="tns:ConvertAddressResponse"></xs:element>
+
+<xs:element name="getAdresses" type="tns:getAdresses"></xs:element>
+
+<xs:element name="getAdressesResponse" type="tns:getAdressesResponse"></xs:element>
+
+<xs:element name="getDistance" type="tns:getDistance"></xs:element>
+
+<xs:element name="getDistanceResponse" type="tns:getDistanceResponse"></xs:element>
+
+<xs:element name="getPrice" type="tns:getPrice"></xs:element>
+
+<xs:element name="getPriceResponse" type="tns:getPriceResponse"></xs:element>
+
+<xs:element name="getRoute" type="tns:getRoute"></xs:element>
+
+<xs:element name="getRouteResponse" type="tns:getRouteResponse"></xs:element>
+
+<xs:element name="getTimeAndDate" type="tns:getTimeAndDate"></xs:element>
+
+<xs:element name="getTimeAndDateResponse" type="tns:getTimeAndDateResponse"></xs:element>
+
+<xs:element name="getTravelTime" type="tns:getTravelTime"></xs:element>
+
+<xs:element name="getTravelTimeResponse" type="tns:getTravelTimeResponse"></xs:element>
+
+<xs:element name="login" type="tns:login"></xs:element>
+
+<xs:element name="loginResponse" type="tns:loginResponse"></xs:element>
+
+<xs:element name="sayHello" type="tns:sayHello"></xs:element>
+
+<xs:element name="sayHelloResponse" type="tns:sayHelloResponse"></xs:element>
+
+<xs:complexType name="getDistance">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDistanceResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPrice">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPriceResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getTimeAndDate">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getTimeAndDateResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sayHello">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sayHelloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getRoute">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg1" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg2" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg3" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg4" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getRouteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getTravelTime">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getTravelTimeResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:time" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="time">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdresses">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg1" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAdressesResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ConverAddress">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ConverAddressResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="login">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg1" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="loginResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ConvertAddress">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ConvertAddressResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

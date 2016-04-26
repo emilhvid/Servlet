@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://52.37.83.173:9901/amazonConnection?wsdl" uri="wsdl/52.37.83.173_9901/amazonConnection.wsdl"/>
+    <system systemId="http://52.37.83.173:9901/amazonConnection?xsd=1" uri="wsdl/52.37.83.173_9901/amazonConnection.xsd_1.xsd"/>
+</catalog>
