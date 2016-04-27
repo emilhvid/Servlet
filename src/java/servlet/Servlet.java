@@ -23,6 +23,12 @@ import javax.xml.ws.Service;
 /**
  *
  * @author Emil
+ * It can only be accessed IF you have started the server and run the AmazonConnection.jar file inside the putty
+ * Otherwise you will get http status 500- Internal server error
+ * 
+ * But WHEN you have run the server and the jar file, you will get the message inside the URL (http://localhost:8080/AmazonServlet/Servlet):
+ * "Der er adgang til Soap metoderne:
+    Hello"
  */
 public class Servlet extends HttpServlet {
 
