@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletConfig;
@@ -24,7 +25,7 @@ import javax.xml.ws.Service;
  *
  * @author Emil
  */
-public class Servlet extends HttpServlet {
+public class GetAddresses extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,16 +44,16 @@ public class Servlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet</title>");            
+            out.println("<title>Servlet GetAddresses</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Servlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet GetAddresses at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+        // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -73,25 +74,43 @@ public class Servlet extends HttpServlet {
             Service service = Service.create(url, qname);
             bs = service.getPort(ButikSøgning.class);    } 
         catch (MalformedURLException ex) {
-            Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GetAddresses.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
     }    
             
     @Override
     public void doGet(HttpServletRequest request, 
 	                  HttpServletResponse response) throws IOException
 	{
-        response.setContentType("text/html");
-	PrintWriter out = response.getWriter();
-	out.println("<html>");
-	out.println("<head><title>Soap interface - fra en servlet</title></head>");
-	out.println("<body>");
-	out.println("<p>Der er adgang til Soap metoderne:<br>");
-	out.println(bs.sayHello()); 
-	out.println("</body>");
-	out.println("</html>");
+        // Set response content type
+      response.setContentType("text/html");
+
+      PrintWriter out = response.getWriter();
+      if(request.getParameter("name")!=null& request.getParameter("city")!=null){
+      String title = "avalible "+request.getParameter("name")+" in "+request.getParameter("city");
+      String docType =
+      "<!doctype html public \"-//w3c//dtd html 4.0 " +
+      "transitional//en\">\n";
+      out.println(docType +
+                "<html>\n" +
+                "<head><title>" + title + "</title></head>\n" +
+                "<body bgcolor=\"#f0f0f0\">\n" +
+                "<h1 align=\"center\">" + title + "</h1>\n" +
+                "<ul>\n" +
+//                "  <li><b>First Name</b>: "
+//                + request.getParameter("name") + "\n" +
+//                "  <li><b>Last Name</b>: "
+//                + request.getParameter("city") + "\n" +
+                "</ul>\n" +
+                "</body></html>");
+      
+          List<String> add = bs.getAdresses(request.getParameter("city"), request.getParameter("name"));
+          for (String string : add) {
+              out.print(string+"<br>");
+          }
+      }
 	}
+  
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -117,5 +136,5 @@ public class Servlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
+
 }
