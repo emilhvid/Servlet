@@ -5,20 +5,30 @@
  */
 package servlet;
 
+import Client.ButikSøgning;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.namespace.QName;
+import javax.xml.ws.Service;
 
 /**
  *
  * @author Emil
  */
 public class getAdresses extends HttpServlet {
-
+// getAddress giver en liste over adresser over det du har søgt, getRoute en rute fra start-slut location, ConverAddress(ArrayList) en list over mulige stoppesteder, ConvertAddress(Returerne en String)
+    // login returnere en boolean
+    //sethome address and a gethome address
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -54,12 +64,42 @@ public class getAdresses extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+        private ButikSøgning bs;
+       private String name, city;
+
+      @Override
+    public void doGet(HttpServletRequest request, 
+	                  HttpServletResponse response) throws IOException
+	{
+            
+        response.setContentType("text/html");
+	PrintWriter out = response.getWriter();
+	out.println("<html>");
+	out.println("<head><title>Soap interface - fra en servlet</title></head>");
+	out.println("<body>");
+	out.println("<p>Der er adgang til Soap metoderne:<br>");
+        URL url;
         
-    }
+        try {
+            url = new URL("http://52.37.83.173:9901/amazonConnection?wsdl");
+            QName qname = new QName("http://amazonconnection/", "ButikSøgningImplService");
+            Service service = Service.create(url, qname);
+            bs = service.getPort(ButikSøgning.class);    } 
+        catch (MalformedURLException ex) {
+            Logger.getLogger(Servlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       name = request.getParameter("name");
+       city= request.getParameter("city");
+        
+        List<String> add = bs.getAdresses("Lyngby","Netto");
+	           for (String string : add) {
+               out.println(string+"<br>"); 
+            }
+        
+        
+	out.println("</body>");
+	out.println("</html>");
+	}
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -73,6 +113,8 @@ public class getAdresses extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+    
+        
     }
 
     /**

@@ -94,7 +94,8 @@ public class Servlet extends HttpServlet {
 	out.println("<head><title>Soap interface - fra en servlet</title></head>");
 	out.println("<body>");
 	out.println("<p>Der er adgang til Soap metoderne:<br>");
-	out.println(bs.sayHello()); 
+	out.println(bs.sayHello());
+        
 	out.println("</body>");
 	out.println("</html>");
 	}
